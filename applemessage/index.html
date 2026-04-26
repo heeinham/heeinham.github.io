@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messages</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- ===== SIDEBAR ===== -->
+      <aside id="sidebar" aria-label="Conversations">
+        <div id="sidebar-header">
+          <h1 id="sidebar-title">Messages</h1>
+          <button
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+            title="Toggle theme"
+          ></button>
+        </div>
+
+        <div id="search-wrap" role="search">
+          <span id="search-icon-el" aria-hidden="true"></span>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search"
+            autocomplete="off"
+            aria-label="Search conversations"
+          />
+        </div>
+
+        <nav id="conversations-list" aria-label="Conversation list"></nav>
+      </aside>
+
+      <!-- Mobile backdrop -->
+      <div id="sidebar-overlay" aria-hidden="true"></div>
+
+      <!-- ===== CHAT WINDOW ===== -->
+      <main id="chat-window">
+        <!-- Header -->
+        <header id="chat-header">
+          <button
+            id="hamburger"
+            aria-label="Open sidebar"
+            title="Conversations"
+          ></button>
+
+          <div id="chat-avatar" aria-hidden="true"></div>
+
+          <div id="chat-info">
+            <div id="chat-name">Select a conversation</div>
+            <div id="chat-status" aria-live="polite"></div>
+          </div>
+
+          <div id="chat-actions" aria-label="Call actions">
+            <button
+              class="chat-action-btn"
+              id="btn-video"
+              title="Video Call"
+              aria-label="Video Call"
+            ></button>
+            <button
+              class="chat-action-btn"
+              id="btn-phone"
+              title="Voice Call"
+              aria-label="Voice Call"
+            ></button>
+            <button
+              class="chat-action-btn"
+              id="btn-info"
+              title="Contact Info"
+              aria-label="Contact Info"
+            ></button>
+          </div>
+        </header>
+
+        <!-- Messages -->
+        <section id="messages-area" aria-live="polite" aria-label="Messages">
+          <div id="empty-state">
+            <div id="empty-icon" aria-hidden="true"></div>
+            <p>Select a conversation to start messaging</p>
+          </div>
+        </section>
+
+        <!-- Input Bar -->
+        <div id="input-bar" role="form" aria-label="Message input">
+          <button
+            class="input-icon-btn"
+            id="attach-btn"
+            title="Add attachment"
+            aria-label="Add attachment"
+          ></button>
+          <button
+            class="input-icon-btn"
+            id="emoji-toggle"
+            title="Emoji picker"
+            aria-label="Toggle emoji picker"
+            aria-expanded="false"
+          ></button>
+
+          <textarea
+            id="msg-input"
+            placeholder="iMessage"
+            rows="1"
+            aria-label="Message text"
+            aria-multiline="true"
+          ></textarea>
+
+          <button
+            id="send-btn"
+            title="Send message"
+            aria-label="Send"
+            disabled
+          ></button>
+
+          <!-- Emoji picker panel (anchored inside input-bar for positioning) -->
+          <div
+            id="emoji-picker"
+            role="dialog"
+            aria-label="Emoji picker"
+            aria-hidden="true"
+          ></div>
+        </div>
+      </main>
+    </div>
+    <!-- #app -->
+
+    <!-- ===== REACTION POPUP (global, repositioned by JS) ===== -->
+    <div
+      id="reaction-popup"
+      role="dialog"
+      aria-label="React to message"
+      aria-hidden="true"
+    >
+      <button class="react-btn" data-emoji="❤️" aria-label="Heart">❤️</button>
+      <button class="react-btn" data-emoji="👍" aria-label="Thumbs up">
+        👍
+      </button>
+      <button class="react-btn" data-emoji="👎" aria-label="Thumbs down">
+        👎
+      </button>
+      <button class="react-btn" data-emoji="😂" aria-label="Haha">😂</button>
+      <button class="react-btn" data-emoji="😮" aria-label="Wow">😮</button>
+      <button class="react-btn" data-emoji="😢" aria-label="Sad">😢</button>
+    </div>
+
+    <!-- Feather Icons (SVG icon library, no framework required) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
